@@ -1,8 +1,8 @@
 // src/App.tsx
 import { Routes, Route } from 'react-router-dom'
-import AdminEventPage from './pages/AdminEventPage'
 import ParticipantEventPage from './pages/ParticipantEventPage'
 import QuestionView from './pages/QuestionView'
+import AdminEventPage from './pages/AdminEventPage'
 
 function App() {
   return (
