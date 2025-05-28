@@ -1,37 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import AppToolbar from './components/AppToolBar';
+import EventPanel from './components/EventPanel';
+import type { PublicEvent } from './models';
 
-function App() {
-  const [count, setCount] = useState(0)
+/* const mockEvents: PublicEvent[] = [
+  { id: 1, title: 'Événement React' },
+  { id: 2, title: 'Événement Redux' },
+];
+
+const App: React.FC = () => {
+  const [selectedEventId, setSelectedEventId] = useState<number | null>(null);
+
+  const handleSelectEvent = (id: number) => {
+    setSelectedEventId(id);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      {/* <h1>Vite + React</h1> */}
-      <h1>🔴⚪️🛡️WAC</h1>
-      <h1>⭐ DIMA WIDAD ⭐</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <AppToolbar events={mockEvents} onSelectEvent={handleSelectEvent} selectedId={selectedEventId} />
+      <EventPanel selectedId={selectedEventId} />
+    </div>
+  );
+};
 
-export default App
+export default App; */
+const mockEvents: PublicEvent[] = [
+    {
+      id: "1",
+      title: "Conférence React",
+      questions: [
+        { id: "q1", content: "Qu'est-ce qu'un hook ?", color: "#cde", author: "Alice" },
+        { id: "q2", content: "Comment gérer le state global ?", author: "Bob" }
+      ]
+    },
+    {
+      id: "2",
+      title: "Atelier Node.js",
+      questions: [
+        { id: "q3", content: "Différence entre require et import ?", color: "#fec", author: "Charlie" }
+      ]
+    }
+  ];
+  
+  const App: React.FC = () => {
+    const [currentEventId, setCurrentEventId] = useState<string>("1");
+  
+    const currentEvent = mockEvents.find((e) => e.id === currentEventId);
+  
+    return (
+      <div>
+        <AppToolbar events={mockEvents} onSelectEvent={setCurrentEventId} />
+        <EventPanel currentEvent={currentEvent} />
+      </div>
+    );
+  };
+  
+  export default App;
