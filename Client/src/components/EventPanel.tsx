@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import type{ PublicEvent } from '../models';
 
 interface Props {
@@ -30,4 +30,28 @@ interface Props {
     );
   };
   
-  export default EventPanel;
+  export default EventPanel; */
+
+  import React from 'react'
+import type { Question } from '../models'
+
+interface Props {
+  questions: Question[]
+}
+
+const EventPanel: React.FC<Props> = ({ questions }) => {
+  return (
+    <div>
+      <h3>Liste des Questions</h3>
+      <ul>
+        {questions.map(q => (
+          <li key={q.id} style={{ color: q.color }}>
+            {q.content}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+export default EventPanel

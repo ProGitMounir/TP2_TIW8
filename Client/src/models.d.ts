@@ -1,8 +1,8 @@
 export interface Question {
-  id: string;
+  id: number;
   content: string;
-  color?: string;
-  author?: string;
+  color: string;
+  author: string;
 }
 
 export interface PublicEvent {

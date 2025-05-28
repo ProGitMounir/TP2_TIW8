@@ -1,29 +1,8 @@
-import React, { useState } from 'react';
+/* import React, { useState } from 'react';
 import AppToolbar from './components/AppToolBar';
 import EventPanel from './components/EventPanel';
 import type { PublicEvent } from './models';
 
-/* const mockEvents: PublicEvent[] = [
-  { id: 1, title: 'Événement React' },
-  { id: 2, title: 'Événement Redux' },
-];
-
-const App: React.FC = () => {
-  const [selectedEventId, setSelectedEventId] = useState<number | null>(null);
-
-  const handleSelectEvent = (id: number) => {
-    setSelectedEventId(id);
-  };
-
-  return (
-    <div>
-      <AppToolbar events={mockEvents} onSelectEvent={handleSelectEvent} selectedId={selectedEventId} />
-      <EventPanel selectedId={selectedEventId} />
-    </div>
-  );
-};
-
-export default App; */
 const mockEvents: PublicEvent[] = [
     {
       id: "1",
@@ -55,4 +34,29 @@ const mockEvents: PublicEvent[] = [
     );
   };
   
-  export default App;
+  export default App; */
+import React from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import EventPage from './pages/EventPage'
+import SingleQuestionPage from './pages/SingleQuestionPage'
+import './App.css'
+
+const App = () => {
+  return (
+    <Routes>
+      {/* Redirection vers un événement par défaut */}
+      <Route path="/" element={<Navigate to="/admin/event/1" />} />
+      
+      {/* Vue admin */}
+      <Route path="/admin/event/:eventId" element={<EventPage isAdmin={true} />} />
+
+      {/* Vue participant */}
+      <Route path="/event/:eventId" element={<EventPage isAdmin={false} />} />
+
+      {/* Page de question unique */}
+      <Route path="/event/:eventId/question/:questionId" element={<SingleQuestionPage />} />
+    </Routes>
+  )
+}
+
+export default App

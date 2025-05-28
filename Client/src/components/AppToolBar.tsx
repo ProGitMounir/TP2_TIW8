@@ -1,35 +1,6 @@
-import React from 'react';
+/* import React from 'react';
 import type { PublicEvent } from '../models';
 
-/* interface Props {
-  events: PublicEvent[];
-  onSelectEvent: (id: number) => void;
-  selectedId: number | null;
-}
-
-const AppToolbar: React.FC<Props> = ({ events, onSelectEvent, selectedId }) => {
-  return (
-    <div>
-      <h1>Choisissez un événement</h1>
-      <ul>
-        {events.map((event) => (
-          <li
-            key={event.id}
-            style={{
-              cursor: 'pointer',
-              fontWeight: selectedId === event.id ? 'bold' : 'normal',
-            }}
-            onClick={() => onSelectEvent(event.id)}
-          >
-            {event.title}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-export default AppToolbar; */
 interface Props {
     events: PublicEvent[];
     onSelectEvent: (id: string) => void;
@@ -50,4 +21,36 @@ interface Props {
     );
   };
   
-  export default AppToolbar;
+  export default AppToolbar; */
+import React from 'react'
+import type { PublicEvent } from '../models'
+import { Link, useLocation } from 'react-router-dom'
+
+interface Props {
+  events: Array<PublicEvent>
+  currentEventId: number
+}
+
+const AppToolbar: React.FC<Props> = ({ events, currentEventId }) => {
+  const location = useLocation()
+  const isAdmin = location.pathname.includes('/admin')
+
+  return (
+    <div style={{ background: '#ddd', padding: '10px' }}>
+      <h1>Événement #{currentEventId}</h1>
+      <nav>
+        {events.map(event => (
+          <Link
+            key={event.id}
+            to={`${isAdmin ? '/admin' : ''}/event/${event.id}`}
+            style={{ marginRight: '10px' }}
+          >
+            {event.title}
+          </Link>
+        ))}
+      </nav>
+    </div>
+  )
+}
+
+export default AppToolbar
