@@ -4,6 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "tailwindcss";
 
 .logo {
   height: 6em;

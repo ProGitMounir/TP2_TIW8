@@ -1,19 +1,26 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-//import './index.css'
-//import App from './App.tsx'
-import Header from './components/Header.tsx'
-import Content from './components/Content.tsx'
-import Footer from './components/Footer.tsx'
+// src/main.tsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
+import { Provider } from 'react-redux'
+import { store } from './store'
+import { BrowserRouter } from 'react-router-dom'
 
+// Expose Redux store dans la console pour debug
+declare global {
+  interface Window {
+    mystore: unknown
+  }
+}
+window.mystore = store
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-   {/* <App /> */}
-   <div className="container">
-      <Header />
-      <Content />
-      <Footer />
-    </div>
-  </StrictMode>,
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
 )

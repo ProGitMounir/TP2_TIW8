@@ -1,36 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.tsx
+import { Routes, Route } from 'react-router-dom'
+import AdminEventPage from './pages/AdminEventPage'
+import ParticipantEventPage from './pages/ParticipantEventPage'
+import QuestionView from './pages/QuestionView'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      {/* <h1>Vite + React</h1> */}
-      <h1>🔴⚪️🛡️WAC</h1>
-      <h1>⭐ DIMA WIDAD ⭐</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      <Route path="/admin/event/:eventId" element={<AdminEventPage />} />
+      <Route path="/event/:eventId" element={<ParticipantEventPage />} />
+      <Route path="/event/:eventId/question/:questionId" element={<QuestionView />} />
+      {/* Route de fallback au cas où */}
+      <Route path="*" element={<p>Page non trouvée</p>} />
+    </Routes>
   )
 }
 
