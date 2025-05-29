@@ -3,6 +3,7 @@ export interface Question {
   content: string;
   color: string;
   author: string;
+  votes: number;
 }
 
 export interface PublicEvent {

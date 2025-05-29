@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import { useParams } from 'react-router-dom'
 import AppToolbar from '../components/AppToolBar'
 import EventPanel from '../components/EventPanel'
@@ -26,4 +26,90 @@ const EventPage: React.FC<Props> = ({ isAdmin }) => {
   )
 }
 
+export default EventPage */
+
+// 2
+/* import React from 'react'
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import type { RootState } from '../store'
+import Question from '../components/Question'
+
+interface EventPageProps {
+  isAdmin: boolean
+}
+
+const EventPage: React.FC<EventPageProps> = ({ isAdmin }) => {
+  const { eventId } = useParams()
+  const numericEventId = Number(eventId)
+
+  const event = useSelector((state: RootState) =>
+    state.events.events.find((e) => e.id === numericEventId)
+  )
+
+  if (!event) {
+    return <div>Événement non trouvé</div>
+  }
+
+  return (
+    <div>
+      <h1>{event.name}</h1>
+      {event.questions.map((q) => (
+        <Question
+          key={q.id}
+          eventId={event.id}
+          questionId={q.id}
+          text={q.text}
+          votes={q.votes}
+        />
+      ))}
+    </div>
+  )
+}
+
+export default EventPage */
+
+//3
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import type { RootState } from '../store'
+import Question from '../components/Question'
+import NewQuestionForm from '../components/NewQuestionForm'
+
+interface EventPageProps {
+  isAdmin: boolean
+}
+
+const EventPage: React.FC<EventPageProps> = ({ isAdmin }) => {
+  const { eventId } = useParams()
+  const numericEventId = Number(eventId)
+
+  const event = useSelector((state: RootState) =>
+    state.events.events.find((e) => e.id === numericEventId)
+  )
+
+  if (!event) return <div>Événement introuvable</div>
+
+  return (
+    <div>
+      <h1>{event.title}</h1>
+
+      {!isAdmin && <NewQuestionForm eventId={event.id} />}
+
+      {event.questions.map((q) => (
+        <Question
+          key={q.id}
+          eventId={event.id}
+          questionId={q.id}
+          text={q.content}
+          votes={q.votes}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default EventPage
+
+
