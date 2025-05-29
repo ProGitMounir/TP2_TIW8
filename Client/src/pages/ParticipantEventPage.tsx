@@ -15,6 +15,7 @@ const ParticipantEventPage: React.FC = () => {
   if (!event) return <p>Événement introuvable.</p>;
 
   return (
+    
     <div className="p-4">
       <EventPanel event={event} />
     </div>

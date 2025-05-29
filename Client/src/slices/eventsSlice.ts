@@ -1,7 +1,7 @@
 // src/slices/eventsSlice.ts
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { PublicEvent } from '../models/models'
+import type { PublicEvent, Question } from '../models/models'
 
 interface EventsState {
   events: PublicEvent[]
@@ -57,8 +57,18 @@ export const eventsSlice = createSlice({
         question.upvotes += 1
       }
     },
+    addQuestion: (
+      state,
+      action: PayloadAction<{ eventId: string; question: Question }>
+    ) => {
+      const event = state.events.find((e) => e.id === action.payload.eventId);
+      if (event) {
+        event.questions.push(action.payload.question);
+      }
+    },
+    
   },
 })
 
-export const { setCurrentEvent, upvoteQuestion } = eventsSlice.actions
+export const { setCurrentEvent, upvoteQuestion, addQuestion } = eventsSlice.actions
 export default eventsSlice.reducer
