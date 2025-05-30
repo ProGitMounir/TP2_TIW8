@@ -11,3 +11,8 @@ export interface PublicEvent {
   title: string;
   questions: Question[];
 }
+
+export interface Gesture {
+  name: string;
+  points: [number, number][];
+}

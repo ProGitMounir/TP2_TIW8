@@ -21,7 +21,6 @@ const AdminPage: React.FC<AdminPageProps> = ({ isAdmin }) => {
       <Header />
       <main className="p-6 max-w-4xl mx-auto">
         <h2 className="text-2xl font-semibold mb-4">Sélectionne un événement</h2>
-
         {/* Sélecteur d'événements pour l'admin */}
         <select
           value={currentEventId ?? ""}
@@ -35,6 +34,10 @@ const AdminPage: React.FC<AdminPageProps> = ({ isAdmin }) => {
             </option>
           ))}
         </select>
+        <h3 className="bg-blue-100 text-blue-800 border border-blue-300 rounded-md p-4 mb-4 shadow-sm">
+          En tant qu’administrateur, vous pouvez visualiser les questions d’un événement, augmenter les votes à l’infini et supprimer les questions.
+        </h3>
+
 
         {currentEventId && (
           <div className="mt-6">

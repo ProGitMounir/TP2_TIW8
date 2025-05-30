@@ -36,6 +36,9 @@ const ParticipantPage: React.FC<ParticipantPageProps> = ({ isAdmin }) => {
             </option>
           ))}
         </select>
+        <h3 className="bg-blue-100 text-blue-800 border border-blue-300 rounded-md p-4 mb-4 shadow-sm">
+          En tant que Participant, vous pouvez visualiser les questions d’un événement, augmenter les votes à l’infini et ajouter des questions.
+        </h3>
 
         {currentEventId && (
           <div className="mt-6">

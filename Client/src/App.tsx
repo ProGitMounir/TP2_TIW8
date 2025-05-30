@@ -7,6 +7,7 @@ import AdminPage from './pages/AdminPage'
 import ParticipantPage from './pages/ParticipantPage'
 import { isMobile } from 'react-device-detect' // <-- Import pour détecter si l'appareil est mobile
 import './App.css' // <-- Import du fichier CSS
+import GesturePage from './pages/GesturePage'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
       />
 
       <Route path="/participant" element={<ParticipantPage isAdmin={false} />} />
+      <Route path="/geste" element={<GesturePage />} />
 
       {/* Admin page événement protégée également */}
       <Route
