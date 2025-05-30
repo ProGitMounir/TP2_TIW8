@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { eventsMock } from '../data/mockEvents'
 import type { Question } from '../models'
 
+// Page pour afficher une question spécifique d'un événement
 const SingleQuestionPage: React.FC = () => {
   const { eventId, questionId } = useParams()
   const navigate = useNavigate()
@@ -30,6 +31,7 @@ const SingleQuestionPage: React.FC = () => {
         {question.content}
       </p>
 
+      {/* Slide entre question */}
       <div className="flex justify-between">
         <button
           className="bg-gray-200 hover:bg-gray-300 text-sm font-medium px-4 py-2 rounded disabled:opacity-50"

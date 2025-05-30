@@ -1,59 +1,48 @@
-/* import React, { useState } from 'react';
-import AppToolbar from './components/AppToolBar';
-import EventPanel from './components/EventPanel';
-import type { PublicEvent } from './models';
-
-const mockEvents: PublicEvent[] = [
-    {
-      id: "1",
-      title: "Conférence React",
-      questions: [
-        { id: "q1", content: "Qu'est-ce qu'un hook ?", color: "#cde", author: "Alice" },
-        { id: "q2", content: "Comment gérer le state global ?", author: "Bob" }
-      ]
-    },
-    {
-      id: "2",
-      title: "Atelier Node.js",
-      questions: [
-        { id: "q3", content: "Différence entre require et import ?", color: "#fec", author: "Charlie" }
-      ]
-    }
-  ];
-  
-  const App: React.FC = () => {
-    const [currentEventId, setCurrentEventId] = useState<string>("1");
-  
-    const currentEvent = mockEvents.find((e) => e.id === currentEventId);
-  
-    return (
-      <div>
-        <AppToolbar events={mockEvents} onSelectEvent={setCurrentEventId} />
-        <EventPanel currentEvent={currentEvent} />
-      </div>
-    );
-  };
-  
-  export default App; */
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import EventPage from './pages/EventPage'
 import SingleQuestionPage from './pages/SingleQuestionPage'
-import './App.css'
+import Home from './pages/Home'
+import AdminPage from './pages/AdminPage'
+import ParticipantPage from './pages/ParticipantPage'
+import { isMobile } from 'react-device-detect' // <-- Import pour détecter si l'appareil est mobile
+import './App.css' // <-- Import du fichier CSS
 
 const App = () => {
   return (
     <Routes>
-      {/* Redirection vers un événement par défaut */}
-      <Route path="/" element={<Navigate to="/admin/event/1" />} />
-      
-      {/* Vue admin */}
-      <Route path="/admin/event/:eventId" element={<EventPage isAdmin={true} />} />
+      <Route path="/" element={<Home />} />
 
-      {/* Vue participant */}
+      {/* Redirection mobile pour la page admin */}
+      <Route
+        path="/admin"
+        element={
+          isMobile ? (
+            <Navigate to="/participant" replace />
+          ) : (
+            <AdminPage isAdmin={true} />
+          )
+        }
+      />
+
+      <Route path="/participant" element={<ParticipantPage isAdmin={false} />} />
+
+      {/* Admin page événement protégée également */}
+      <Route
+        path="/admin/event/:eventId"
+        element={
+          isMobile ? (
+            <Navigate to="/participant" replace />
+          ) : (
+            <EventPage isAdmin={true} />
+          )
+        }
+      />
+
+      {/* Page événement selon l'id */}
       <Route path="/event/:eventId" element={<EventPage isAdmin={false} />} />
 
-      {/* Page de question unique */}
+      {/* Page pour afficher une question spécifique d'un événement selon leur id */}
       <Route path="/event/:eventId/question/:questionId" element={<SingleQuestionPage />} />
     </Routes>
   )

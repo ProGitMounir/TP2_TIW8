@@ -1,4 +1,3 @@
-// components/NewQuestionForm.tsx
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addQuestion } from '../slices/eventsSlice'
@@ -38,28 +37,41 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ eventId }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
-      <input
-        type="text"
-        placeholder="Votre question"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Votre nom"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-        required
-      />
-      <input
-        type="color"
-        value={color}
-        onChange={(e) => setColor(e.target.value)}
-      />
-      <button type="submit">Poser la question</button>
-    </form>
+    <form onSubmit={handleSubmit} className="mb-6 flex flex-col gap-4 max-w-md mx-auto">
+  <input
+    type="text"
+    placeholder="Votre question"
+    value={content}
+    onChange={(e) => setContent(e.target.value)}
+    required
+    className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+  <input
+    type="text"
+    placeholder="Votre nom"
+    value={author}
+    onChange={(e) => setAuthor(e.target.value)}
+    required
+    className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+  <div className="flex items-center gap-2">
+    <label htmlFor="colorInput" className="text-sm text-gray-700">Choisir une couleur :</label>
+    <input
+      id="colorInput"
+      type="color"
+      value={color}
+      onChange={(e) => setColor(e.target.value)}
+      className="w-8 h-8 p-0 border-0"
+    />
+  </div>
+  <button
+    type="submit"
+    className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded"
+  >
+    Poser la question
+  </button>
+</form>
+
   )
 }
 
