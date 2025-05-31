@@ -1,4 +1,4 @@
-# 🗳️ TIW8 - TP2 Application de Présentation multi-surface en React
+# Mounir TIW8 - TP2 Application de Présentation multi-surface en React
 
 - Une application React qui permet d'ajouter, supprimer des questions personnalisées à des événements ( intitulé, couleur, autheur...).
 - Augmenter les votes des questions
