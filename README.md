@@ -9,6 +9,7 @@
 - Option chez le participant pour ajouter les questions
 - Personnalisation des questions (auteur, couleur, contenue)
 - Option chez l'admin pour supprimer les questions
+- Lorsqu’on utilise un appareil mobile et qu’on tente d’accéder à /admin, on est automatiquement redirigé vers /participant
 - Navigation entre les événements
 - Gestion via Redux
 - Détection de geste
@@ -107,10 +108,10 @@ Pour générer le fichier de production cote client:
 
 
 ## Quelques images 
-![accueil](https://github.com/user-attachments/assets/64b916d6-112b-4d22-ab0a-924b174ec134)
+![accueil](https://github.com/user-attachments/assets/dc92b34b-dfc8-4160-a2fc-5f107634a828)
 ![participant](https://github.com/user-attachments/assets/03ba54c3-5efc-4934-9bee-d14da40a39f4)
 ![admin](https://github.com/user-attachments/assets/d1323a70-38b2-47d9-a409-a24c2512ec31)
-![geste](https://github.com/user-attachments/assets/b4f68fda-8e6f-4569-9d91-4bfa6a15b354)
+![geste](https://github.com/user-attachments/assets/cd39630e-7b10-44b8-8b56-047a15ccf387)
 
 
 
