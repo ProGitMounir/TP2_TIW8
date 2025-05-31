@@ -1,4 +1,4 @@
-import React from 'react'
+
 import type { Question } from '../models'
 
 interface Props {

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useDispatch } from 'react-redux'
 import { upvoteQuestion, deleteQuestion } from '../slices/eventsSlice'
 import type { AppDispatch } from '../store'

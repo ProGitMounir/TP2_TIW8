@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Routes, Route, Navigate } from 'react-router-dom'
 import EventPage from './pages/EventPage'
 import SingleQuestionPage from './pages/SingleQuestionPage'

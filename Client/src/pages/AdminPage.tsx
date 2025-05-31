@@ -41,7 +41,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ isAdmin }) => {
 
         {currentEventId && (
           <div className="mt-6">
-            <EventPage isAdmin={true} overrideEventId={currentEventId} /> {/* on passe isAdmin à true pour l'admin */ }
+            <EventPage isAdmin={isAdmin} overrideEventId={currentEventId} /> {/* on passe isAdmin à true pour l'admin */ }
           </div>
         )}
       </main>

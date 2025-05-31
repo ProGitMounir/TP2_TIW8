@@ -1,7 +1,7 @@
 import type { Middleware } from "@reduxjs/toolkit";
 
 // fichier de middleware pour logger les actions Redux
-const loggerMiddleware: Middleware = (store) => (next) => (action) => {
+const loggerMiddleware: Middleware = (store) => (next) => (action: any) => {
   console.group(`[Logger] ${action.type}`);
   console.log("Before:", store.getState());
   console.log("Action:", action);

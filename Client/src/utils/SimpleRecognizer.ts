@@ -84,7 +84,7 @@ export class SimpleRecognizer {
       if (y < minY) minY = y;
       if (y > maxY) maxY = y;
     }
-
+    size = size || 1; // Default size pour que le yarn build ne plante pas
     const scale = Math.max(maxX - minX, maxY - minY);
     return points.map(([x, y]) => [(x - minX) / scale, (y - minY) / scale]);
   }

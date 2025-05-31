@@ -22,6 +22,11 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
+const path = require("path");
+const DIST_DIR = path.join(__dirname, "../../../Client/dist");
+const HTML_FILE = path.join(DIST_DIR, "index.html");
+app.use(express.static(DIST_DIR));
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {

@@ -9,7 +9,7 @@ const socketMiddleware: Middleware = (store) => {
     store.dispatch({ ...action, meta: { remote: true } });
   });
 
-  return (next) => (action) => {
+  return (next) => (action: any) => {
     // Éviter d’envoyer en boucle ce qui vient déjà du réseau
     if (!action.meta?.remote) {
       socket.emit("action", action);

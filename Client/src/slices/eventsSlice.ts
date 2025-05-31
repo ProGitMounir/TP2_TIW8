@@ -42,7 +42,10 @@ const eventsSlice = createSlice({
     // Actions pour upvoter une question
     upvoteQuestion: (
       state,
-      action: PayloadAction<{ eventId: number; questionId: number }>
+      action: PayloadAction<{
+        eventId: number;
+        questionId: number;
+      }>
     ) => {
       const { eventId, questionId } = action.payload;
       const event = state.events.find((e) => e.id === eventId);
