@@ -21,25 +21,28 @@
 ### 1. Cloner le projet
 
           git clone https://github.com/ProGitMounir/TP2_TIW8.git
-          cd TP2
+
+## ⚠️ Se mettre dans la branche mounir-dev ⚠️⚠
+![brancheMounirDev](https://github.com/user-attachments/assets/1a5ce34b-ef74-4079-ae2c-1be263ac2c08)
 
 ### 2. Installer les dépendances
-      cd server
+      cd Server
       cd src
       yarn install
       cd ..
-      cd client
+      cd Client
       npm install
-      cd..
+      yarn build
+      
 
 ## ▶️ Lancer le projet en développement
     # Lancer le serveur backend
-        cd server
+        cd Server
         cd src
         yarn start  
 
     # Dans un autre terminal, lancer le frontend
-        cd client
+        cd Client
         npm run dev
 
 Le projet sera disponible sur http://localhost:5173 (ou selon Vite).
