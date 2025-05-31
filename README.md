@@ -47,29 +47,6 @@
 
 Le projet sera disponible sur http://localhost:5173 (ou selon Vite).
 
-## ✅ Pré-requis
-
-    Node.js >= 18.x
-
-    npm >= 9.x
-
-    Git
-
-    Un navigateur moderne (Chrome, Firefox...)
-
-## 🧪 Technologies utilisées
-
-    ⚛️ React
-
-    🧰 Redux Toolkit
-
-    🔁 React Router
-
-    🎨 TailwindCSS (ou autre)
-
-    🆔 uuid
-
-    🧪 TypeScript
 
 ## 🗂️ Structure du projet
        my-project/
